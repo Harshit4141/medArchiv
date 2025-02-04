@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /* :root {
+=======
+/* @import "tailwindcss";
+:root {
+>>>>>>> bddb47b0c82623044ea9b5d28d37f3fdd4574960
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +70,51 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+<<<<<<< HEAD
 } */
+=======
+}
+
+} */
+ .sidebar {
+   color: #ffff
+ }
+ .logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #ffff;
+  padding: 10px;
+ }
+ .logo-icon{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background:rgba(28, 17, 41, 0.88);
+ }
+ .menu-bar{
+  height: 88vh;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1rem;
+  position: relative;
+ }
+ .toggle-theme-btn{
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+ }
+ .toggle{
+  margin-left: 15px;
+ }
+>>>>>>> bddb47b0c82623044ea9b5d28d37f3fdd4574960
