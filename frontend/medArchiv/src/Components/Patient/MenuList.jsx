@@ -5,26 +5,30 @@ import { Link } from 'react-router-dom';
 const MenuList = ({darkTheme}) => {
     return(
         <Menu theme = {darkTheme ? 'dark' : 'light'} mode ="inline" className="menu-bar">
-          <Link to="/DStatus"><Menu.Item key="dashboard" icon={ <HomeOutlined />}>
+          <Link to="/Dashboard"><Menu.Item key="dashboard" icon={ <HomeOutlined />}>
              Dashboard
             </Menu.Item></Link>
             
+            <Link to="/FindDoctor"><Menu.Item key="FindDoctor" icon={ <SelectOutlined />}>
+            FindDoctor
+            </Menu.Item>
+            </Link>
 
-             <Link to="/DoctorAppointment"><Menu.Item key="appointment" icon={ <SelectOutlined />}>
+             <Link to="/PatientAppointment"><Menu.Item key="appointment" icon={ <SelectOutlined />}>
              Appointments
             </Menu.Item>
             </Link>
             
-            <Link to="/DoctorNotification"><Menu.Item key="notification" icon={ <NotificationOutlined />}>
+            <Link to="/PatientNotification"><Menu.Item key="notification" icon={ <NotificationOutlined />}>
              Notifications
             </Menu.Item></Link>
              
-            {/* <Link to="/DoctorHistory"><Menu.Item key="history" icon={ <HistoryOutlined />}>
-             History
+            {/* <Link to="/PatientRecord"><Menu.Item key="history" icon={ <HistoryOutlined />}>
+            Record
             </Menu.Item>
             </Link> */}
 
-            <Link to="/DoctorDashboard"><Menu.Item key="logout" icon={ <LogoutOutlined /> }>
+            <Link to="/PatientDashboard"><Menu.Item key="logout" icon={ <LogoutOutlined /> }>
              Logout
             </Menu.Item></Link>
             

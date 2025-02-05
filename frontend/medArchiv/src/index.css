@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-/* :root {
-=======
 /* @import "tailwindcss";
 :root {
->>>>>>> bddb47b0c82623044ea9b5d28d37f3fdd4574960
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -72,10 +68,7 @@ button:focus-visible {
   }
 <<<<<<< HEAD
 } */
-=======
-}
-
-} */
+ 
  .sidebar {
    color: #ffff
  }
@@ -117,4 +110,3 @@ button:focus-visible {
  .toggle{
   margin-left: 15px;
  }
->>>>>>> bddb47b0c82623044ea9b5d28d37f3fdd4574960

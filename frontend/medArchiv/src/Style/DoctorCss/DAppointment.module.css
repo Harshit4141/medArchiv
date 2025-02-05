@@ -1,28 +1,8 @@
-.findDoctor{
-    /* background-color: rgb(255, 255, 255); */
-    margin: 3rem;
-    padding: 0rem;
-    /* height: 100vh; */
-    display: flex;
-    width: 80%;
-    float: right;
-    /* justify-content: center;*/
-    align-items:flex-start;
-    /* align-content: center; */
-    flex-wrap: wrap; 
-    font-family: "Poppins", serif;
-    font-size:smaller;
-    /* align-items: center;  */
-    /* margin: 2rem;    */
-    /* margin-top: 5rem; */
-    /* margin-left: 18%; */
-    /* background-color: aqua; */
-    /* flex-direction: row; */
-}
 .card{
     background-color: rgb(217, 217, 217);
     padding: 2rem;
-    margin: 0.8rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
     padding-top: 1rem;
     border-radius: 0.5rem;
     display: flex;
@@ -30,13 +10,16 @@
     box-shadow: 5px 5px 10px rgb(66, 65, 65);
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    /* margin-top: 5rem; */
+    /* margin-left: 3rem; */
+    height: 23rem;
 
 }
 .img{
-    width: 8rem;
+    width: 6rem;
 }
 .namesection{
     /* background-color: aqua; */
@@ -46,20 +29,12 @@
     justify-content: center;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    /* background-color: aqua; */
-    line-height: 0.8rem;
-}
-.namesection h3{
-    /* background-color: azure; */
-    font-size: large;
-   
 }
 .message{
     margin: 0.5rem;
     width: 11rem;
     text-align: center;
-    font-size:medium;
-    /* background-color: blanchedalmond; */
+    font-size: smaller;
 }
 
 
@@ -72,7 +47,14 @@
     justify-content:space-between;
     /* padding-top: 0rem; */
 }
-
+.selectsection{
+    display: flex;
+    flex-wrap: wrap;
+    width: 11rem;
+    justify-content:space-around;
+    align-items: center;
+    /* background-color: red; */
+}
 .Appointbtn{
     background-color:rgba(2, 143, 2, 0.97);
     padding: 0.5rem;
@@ -87,6 +69,38 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
     /* background-color: aqua; */
     width: 100%;
+}
+.selectTime{
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    width: 6rem;
+    font-weight:bold;
+    border: 0.1rem solid rgb(193, 186, 186);
+    color: black;
+    background-color: aliceblue;
+    color: black;
+}
+.selectTime option{
+    color: rgb(0, 0, 0);
+    background-color: rgba(216, 220, 216, 0.722);
+    font-weight: bold;
+}
+.selectTime:checked{
+    background-color: beige;
+    color: blue;
+}
+
+.view{
+    padding: 0.55rem;
+    font-weight:bold;
+    border: 0.1rem solid rgb(193, 186, 186);
+    border-radius: 0.3rem;
+    background-color: rgba(255, 0, 0, 0.885);
+    /* background-color: rgba(86, 91, 199, 0.83); */
+    color: white;
+    padding-left:1rem;
+    padding-right: 1rem;
 }

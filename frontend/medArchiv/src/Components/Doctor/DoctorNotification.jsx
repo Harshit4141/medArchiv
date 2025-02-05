@@ -1,9 +1,9 @@
 import React from 'react'
-
+import DNotification from './DNotification'
 function DoctorNotification() {
   return (
-    <div>
-      <h1>Rachita</h1>
+    <div style={{marginTop:"6rem", marginLeft:"5rem"}}>
+      <DNotification/>
     </div>
   )
 }

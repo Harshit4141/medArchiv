@@ -1,14 +1,13 @@
-<<<<<<< HEAD
+
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import male from '../../assets/male.png'
 import female from '../../assets/female.png'
 import style from "../../Style/DoctorCss/DoctorAppointmentDetail.module.css"
 import arrow from '../../assets/messagearrow.png'
-=======
 import 'react'
 
->>>>>>> bddb47b0c82623044ea9b5d28d37f3fdd4574960
+
 function DoctorAppointmentDetail() {
   const { pid } = useParams();
   let [input, setinput] = useState("");
@@ -128,10 +127,18 @@ function DoctorAppointmentDetail() {
                 <td>Breathing Problem</td>
                 <td>No</td>
               </tr>
-              {/* <tr>
+              <tr>
                 <td>Stroke</td>
                 <td>No</td>
-              </tr> */}
+              </tr>
+              <tr>
+                <td>Breathing Problem</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Stroke</td>
+                <td>No</td>
+              </tr>
               
               
             </tbody>
