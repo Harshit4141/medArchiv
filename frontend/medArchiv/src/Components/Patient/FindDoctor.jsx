@@ -1,28 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
+import DoctorCard from './DoctorCard'
 import style from '../../Style/PatientCss/FindDoctor.module.css'
-import female from '../../assets/female.png'
-import male from '../../assets/male.png'
-import { Link } from 'react-router-dom'
 function FindDoctor() {
+  let [Doctor,setDoctor]=useState(
+    [
+      {
+        "id": 1,
+        "name": "Dr. Mithun Bhartia",
+        "specialization": "Sexologist",
+        "gender": "Male"
+      },
+      {
+        "id": 2,
+        "name": "Dr. Priya Soni",
+        "specialization": "Cardiologist",
+        "gender": "Female"
+      },
+      {
+        "id": 3,
+        "name": "Dr. Arvind Kapoor",
+        "specialization": "Orthopedic Surgeon",
+        "gender": "Male"
+      },
+      {
+        "id": 4,
+        "name": "Dr. Neha Agarwal",
+        "specialization": "Dermatologist",
+        "gender": "Female"
+      },
+      {
+        "id": 5,
+        "name": "Dr. Rajeev Verma",
+        "specialization": "Pediatrician",
+        "gender": "Male"
+      }
+    ]
+    
+    
+    
+  )
   return (
-    <div className={style.findDoctor}>
-            
-            <div className={style.card}>
-                <div>
-                    <img src={male} className={style.img} alt="female" title="women" />
-                </div>
-                <div className={style.namesection}>
-                    <h3>Dr.Harshit Misrha</h3>
-                    <p className={style.message}>Dentist</p>
-                </div>
-                <div className={style.buttonSection}>
-                      <Link to="/DoctorDetail"><div className={style.Btn}>
-                     <button className={style.Appointbtn}>View</button>
-                    </div></Link> 
-                </div>
-            </div>
-            
-            </div>
+  <div className={style.findDoctor}>
+    {Doctor.map((Doct)=>{
+      return(
+        <DoctorCard Doctor={Doct}/>
+      );
+    })}
+   
+  
+   </div>
   )
 }
 

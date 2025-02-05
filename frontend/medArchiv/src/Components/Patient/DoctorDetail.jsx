@@ -3,11 +3,13 @@ import male from '../../assets/male.png'
 import female from '../../assets/female.png'
 import style from '../../Style/PatientCss/DoctorDetail.module.css'
 import arrow from '../../assets/messagearrow.png'
+import ratings from '../../assets/rating.png'
 function DoctorDetail() {
     let [input,setinput]=useState("");
     let inputchange=(event)=>{
         setinput(event.target.value)
     }
+    let [rating,setrating]=useState(3)
     return (
         <div className={style.DoctorDetail}>
 
@@ -53,7 +55,7 @@ function DoctorDetail() {
                                 <td>434k4545345j343kjjkk</td>
                             </tr>
                             <tr>
-                                <td>Area of Preactice</td>
+                                <td>Area of Practice</td>
                                 <td>Thyroid,Diabetologist</td>
                             </tr>
                             <tr>
@@ -62,7 +64,14 @@ function DoctorDetail() {
                             </tr>
                             <tr>
                                 <td>Rating</td>
-                                <td>No</td>
+                                <td>{
+                                    Array.from({length:rating}).map((_,index)=>{
+                                        return (
+                                            <img src={ratings} className={style.rate}/>
+                                        )
+                                    })
+                                    }
+                                </td>
                             </tr>
                         </tbody>
                     </table>

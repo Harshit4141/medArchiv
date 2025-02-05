@@ -1,5 +1,5 @@
 .DoctorDetail{
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     margin: 0rem;
     padding: 0rem;
     /* height: 100vh; */
@@ -14,25 +14,26 @@
     font-size:smaller;
     /* align-items: center;  */
     margin: 2rem;   
-    margin-top: 5rem;
-    margin-left: 18%;
+    /* margin-top: 5rem; */
+    /* margin-left: 18%; */
     /* flex-direction: ; */
 }
 .card{
     background-color: rgb(217, 217, 217);
     padding: 1.5rem;
-    margin-right: 1.5rem;
+    /* margin-right: 1.5rem; */
     padding-top: 0rem;
     border-radius: 0.5rem;
     display: flex;
     border: 1px solid black;
     box-shadow: 5px 5px 10px rgb(66, 65, 65);
     display: flex;
+    /* flex:1; */
     /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 46%;
+    width: 55%;
     /* flex:1; */
 
 }
@@ -42,7 +43,7 @@
     justify-content: center;
     align-items: center;
     /* background-color: aqua; */
-    margin: 1rem;
+    margin: 2rem;
     width: 31%;
     /* padding: 0.5rem; */
 }
@@ -53,7 +54,7 @@
     /* align-items: center; */
     /* background-color: rgb(48, 49, 49); */
     background-color: rgb(236, 236, 233);
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
     padding-right:1rem;
     padding-left: 1rem;
     width: 52%;
@@ -68,9 +69,13 @@
 }
 .sectionone{
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
     /* align-items: center; */
     flex-wrap: wrap;
+    /* background-color: antiquewhite; */
+    margin: 0rem;
+    margin-top: 2rem;
+    
 }
 .img{
     width: 8rem;
@@ -221,7 +226,8 @@ h4{
     width: 100%;
     border: 2px solid black;
     /* box-shadow: 5px 5px 15px black; */
-    margin: 2.8rem;
+    margin:1.8rem;
+    margin-top: 0rem;
     margin-bottom: 0rem;
     box-shadow: 5px 5px 10px rgb(66, 65, 65);
     }
@@ -240,6 +246,7 @@ h4{
         text-align:right;
         margin-top: 2rem;
         width: 100%;
+        font-size:large
         /* background-color: blue; */
        
        
@@ -279,4 +286,6 @@ h4{
     padding-left: 0.5rem;
     }
       
-  
+  .rate{
+    width: 1.5rem;
+  }

@@ -1,9 +1,9 @@
 import React from 'react'
-
+import PNotification from './PNotification'
 function PatientNotification() {
   return (
-    <div>
-      <h1>Rachita</h1>
+    <div style={{marginTop:"6rem", marginLeft:"5rem"}}>
+      <PNotification/>
     </div>
   )
 }

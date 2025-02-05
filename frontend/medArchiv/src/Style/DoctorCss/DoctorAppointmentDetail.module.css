@@ -1,12 +1,14 @@
 .DoctorAppointmentDetail{
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
   display: flex;
-  margin: 4rem;
+  margin: 2rem;
   margin-bottom: 0rem;
   flex-direction: row;
-  justify-content:space-between;
-  margin-left: 18%;
+  justify-content:space-evenly;
+  /* margin-left: 18%; */
   flex-wrap: wrap;
+  width: 100%;
+  /* background-color: aquamarine; */
 
 }
 .message{
@@ -18,9 +20,10 @@
     border: 2px solid black;
     border-radius: 1rem;
     padding: 2rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     width: 100%;
     box-shadow: 5px 5px 10px rgb(66, 65, 65);
+    /* background-color: aqua; */
 }
 .img{
     width: 8rem;
@@ -73,7 +76,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-right: 1.5rem;
-    width: 60%;
+    /* width: 60%; */
     
 
 }
@@ -84,7 +87,7 @@
     border-radius: 1rem;
     padding: 1rem;
     /* margin-left: 2rem; */
-    /* margin-top: 1rem; */
+    margin-top: 1rem;
     /* height: 65%;     */
     display: flex;
     /* justify-content: space-evenly; */
@@ -124,8 +127,10 @@ td{
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 33%;
+    /* width: 33%; */
     /* margin-left: 2rem; */
+    margin-top: 2.6rem;
+    height: 85%;
 
     
 }
@@ -171,7 +176,7 @@ box-shadow: 5px 5px 10px rgb(66, 65, 65);
 width: 100%;
 border: 2px solid black;
 /* box-shadow: 5px 5px 15px black; */
-margin-top: 1rem;
+/* margin-top: 1rem; */
 
 }
 
