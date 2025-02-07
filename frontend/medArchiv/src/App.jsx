@@ -19,6 +19,10 @@ import PatientNotification from './Components/Patient/PatientNotification'
 import PatientRecord from './Components/Patient/PatientRecord'
 import DoctorDetail from './Components/Patient/DoctorDetail'
 import DStatus from './Components/Doctor/DStatus'
+import ForgotPassword from './Components/Admin/forgotpassword'
+import PatientDashboard from './Components/Patient/PatientDashboard' 
+import AdminPanel from './Components/Admin/adminpanel'
+
 function App() {
   const{Header, Sider } = Layout;
   const [darkTheme, setDarkTheme] = useState(true)
@@ -69,13 +73,15 @@ function App() {
        toggleTheme={toggleTheme}/>
        </Sider>
        <Routes>
-     <Route path="/Dashboard" element={<DoctorDashboard/>}/>
+     <Route path="/AdminPanel" element={<AdminPanel/>}/>
      <Route path="/FindDoctor" element={<FindDoctor/>}/>
      <Route path="/PatientAppointment" element={<PatientAppointment />}/>
      <Route path="/PatientNotification" element={<PatientNotification />}/>
      <Route path="/PatientRecord" element={<PatientRecord />}/>
      <Route path="/DoctorDetail/:id" element={<DoctorDetail />}/>
      <Route path="/DoctorDetail" element={<DoctorDetail />}/>
+     <Route path="/PatientDashboard" element={<PatientDashboard />}/>
+     <Route path="/ForgotPassword" element={<ForgotPassword />}/>
      
     </Routes>
      </Layout>
