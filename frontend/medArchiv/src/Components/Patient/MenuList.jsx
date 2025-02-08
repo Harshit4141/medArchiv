@@ -39,7 +39,7 @@ const MenuList = ({darkTheme}) => {
             </Menu.Item>
             </Link> */}
 
-            <Link to="/PatientDashboard"><Menu.Item key="logout" icon={ <LogoutOutlined /> }>
+            <Link to="/Logout"><Menu.Item key="logout" icon={ <LogoutOutlined /> }>
              Logout
             </Menu.Item></Link>
             
