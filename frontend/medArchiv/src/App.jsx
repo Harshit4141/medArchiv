@@ -24,6 +24,8 @@ import PRegistration from './Components/PRegistration'
 import Login from './Components/Login'
 import LandingPage from './Components/LandingPage'
 import EditDoctorProfile from './Components/Doctor/Edit'
+import PatientDashboard from './Components/Patient/PatientDashboard'
+
 function App() {
   const{Header, Sider } = Layout;
   const [darkTheme, setDarkTheme] = useState(true)
@@ -32,7 +34,7 @@ function App() {
   }
   // 1->Patient
   // 0-> Doctor
-  let [check,setCheck]=useState(0)
+  let [check,setCheck]=useState(1)
   
   // Pending
   // Approved
@@ -84,7 +86,7 @@ function App() {
        </Sider>
        <Routes>
        {/* <Route path="/PatientRegistration" element={<PRegistration/>}/> */}
-     <Route path="/Dashboard" element={<DoctorDashboard/>}/>
+     <Route path="/Dashboard" element={<PatientDashboard/>}/>
      <Route path="/FindDoctor" element={<FindDoctor/>}/>
      <Route path="/PatientAppointment" element={<PatientAppointment />}/>
      <Route path="/PatientNotification" element={<PatientNotification />}/>
