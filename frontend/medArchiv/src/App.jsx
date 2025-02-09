@@ -19,6 +19,11 @@ import PatientNotification from './Components/Patient/PatientNotification'
 import PatientRecord from './Components/Patient/PatientRecord'
 import DoctorDetail from './Components/Patient/DoctorDetail'
 import DStatus from './Components/Doctor/DStatus'
+import DRegistration from './Components/DRegistration'
+import PRegistration from './Components/PRegistration'
+import Login from './Components/Login'
+import LandingPage from './Components/LandingPage'
+import EditDoctorProfile from './Components/Doctor/Edit'
 function App() {
   const{Header, Sider } = Layout;
   const [darkTheme, setDarkTheme] = useState(true)
@@ -27,13 +32,19 @@ function App() {
   }
   // 1->Patient
   // 0-> Doctor
-  let [check,setCheck]=useState(1)
+  let [check,setCheck]=useState(0)
   
   // Pending
   // Approved
   let [DoctorStatus,setDoctorStatus]=useState("Approved")
   return (
     <>
+     {/* <Routes>
+     <Route path="/" element={<LandingPage/>}/>
+     <Route path="/Login" element={<Login/>}/>
+     <Route path="/PatientRegistration" element={<PRegistration/>}/>
+     <Route path="/DoctorRegistration" element={<DRegistration/>}/>
+     </Routes> */}
     {check===0?
     
     DoctorStatus==="Approved"?
@@ -45,12 +56,15 @@ function App() {
       toggleTheme={toggleTheme}/>
       </Sider>
       <Routes>
-    
+    {/* <Route path="/DoctorRegistration" element={<DRegistration/>}/> */}
+    {/* <Route path="/" element={<LandingPage/>}/>
+     <Route path="/DoctorRegistration" element={<DRegistration/>}/>
+     <Route path="/PatientRegistration" element={<PRegistration/>}/> */}
     <Route path="/DStatus" element={<DoctorDashboard/>}/>
     <Route path="/DoctorAppointment" element={<DoctorAppointment />}/>
     <Route path="/DoctorAppointmentDeatils/:pid" element={<DoctorAppointmentDeatils/>}/>
     <Route path="/DoctorNotification" element={<DoctorNotification />}/>
-    <Route path="/DoctorHistory" element={<DoctorHistory />}/>
+    <Route path="/Edit" element={<EditDoctorProfile />}/>
   
     
    </Routes>
@@ -69,6 +83,7 @@ function App() {
        toggleTheme={toggleTheme}/>
        </Sider>
        <Routes>
+       {/* <Route path="/PatientRegistration" element={<PRegistration/>}/> */}
      <Route path="/Dashboard" element={<DoctorDashboard/>}/>
      <Route path="/FindDoctor" element={<FindDoctor/>}/>
      <Route path="/PatientAppointment" element={<PatientAppointment />}/>
@@ -80,7 +95,6 @@ function App() {
     </Routes>
      </Layout>
   }
-
     </>
   )
 }

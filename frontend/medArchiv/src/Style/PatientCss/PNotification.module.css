@@ -1,7 +1,7 @@
 
 .h2{
-    margin-bottom:1rem ;
-    color: rgb(4, 140, 219);;
+    margin-bottom:1rem;
+    color: rgb(4, 140, 219);
 }
 .table{
     background-color: rgb(217, 217, 217);
@@ -47,13 +47,13 @@ text-align: center;
 }
 
 .completebtn{
-    background-color: rgb(4, 140, 219);;
+    background-color: rgb(4, 140, 219);
     font-weight: bold;
     color: rgb(232, 234, 236);
     border: 0rem;
 }
 .scheduledbtn{
-    background-color: green;;
+    background-color: green;
     font-weight: bold;
     color: rgb(232, 234, 236);
     border: 0rem;
