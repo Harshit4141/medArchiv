@@ -34,7 +34,7 @@ function App() {
   }
   // 1->Patient
   // 0-> Doctor
-  let [check,setCheck]=useState(1)
+  let [check,setCheck]=useState(0)
   
   // Pending
   // Approved

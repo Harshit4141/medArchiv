@@ -35,7 +35,7 @@ const PatientDashboard = () => {
     setPatientData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleProfilePictureChange = (e) => {
+const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
