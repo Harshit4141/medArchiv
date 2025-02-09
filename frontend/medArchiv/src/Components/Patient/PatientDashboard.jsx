@@ -21,7 +21,6 @@ const PatientDashboard = () => {
     gender: "Male",
     profilePicture: null,
     about: "I am a patient looking for consultation.", // Added an 'about' section
-    profession: "Enginer", // Placeholder qualification
     Prescription: "In Medical observation",
   });
   const [isEditingAbout, setIsEditingAbout] = useState(false);
@@ -100,7 +99,6 @@ const PatientDashboard = () => {
           <p><b>Birthday:</b> {patientData.birthday}</p>
           <p><b>Age:</b> {patientData.age}</p>
           <p><b>Gender:</b> {patientData.gender}</p>
-          <p><b>Profession:</b> {patientData.profession}</p>
           <p><b>District:</b> {patientData.district}</p>
           <p><b>State:</b> {patientData.state}</p>
           <p><b>Country:</b> {patientData.country}</p>

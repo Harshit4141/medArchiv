@@ -22,6 +22,7 @@ import DStatus from './Components/Doctor/DStatus'
 import ForgotPassword from './Components/Admin/forgotpassword'
 import PatientDashboard from './Components/Patient/PatientDashboard' 
 import AdminPanel from './Components/Admin/adminpanel'
+import PatientDashboardEdit from './Components/Patient/PatientDashboardEdit'
 
 function App() {
   const{Header, Sider } = Layout;
@@ -82,6 +83,7 @@ function App() {
      <Route path="/DoctorDetail" element={<DoctorDetail />}/>
      <Route path="/PatientDashboard" element={<PatientDashboard />}/>
      <Route path="/ForgotPassword" element={<ForgotPassword />}/>
+     <Route path="/PatientDashboardEdit" element={<PatientDashboardEdit />}/>
      
     </Routes>
      </Layout>

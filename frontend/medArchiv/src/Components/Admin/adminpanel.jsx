@@ -1,51 +1,59 @@
-import React, { useState } from 'react';
-import './AdminPanel.css';
+import React, { useState } from "react";
+import "./AdminPanel.css";
 
-function AdminPanel() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const initialRequests = [
+  { id: 1, name: "Dr. Priya Soni", specialization: "Cardiologist", status: "Pending" },
+  { id: 2, name: "Dr. Joyti Dubey", specialization: "Dermatologist", status: "Pending" },
+  { id: 3, name: "Dr. Gauri Taneja", specialization: "Neurologist", status: "Pending" },
+];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement your authentication logic here
-    if (username === 'admin' && password === 'admin123') {
-      // Redirect to admin dashboard or perform other actions
-      alert('Login successful!');
-    } else {
-      setError('Invalid username or password');
-    }
+const AdminDoctorApproval = () => {
+  const [requests, setRequests] = useState(initialRequests);
+
+  const handleStatusChange = (id, newStatus) => {
+    setRequests((prevRequests) =>
+      prevRequests.map((req) => (req.id === id ? { ...req, status: newStatus } : req))
+    );
   };
 
   return (
-    <div className="login-container">
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Login</button>
-      </form>
+    <div className="container">
+      <h1 className="title">Doctor Approval Requests</h1>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {requests.map((request) => (
+            <tr key={request.id}>
+              <td>{request.name}</td>
+              <td>{request.specialization}</td>
+              <td>
+                <span className={`status ${request.status.toLowerCase()}`}>{request.status}</span>
+              </td>
+              <td>
+                {request.status === "Pending" && (
+                  <div className="actions">
+                    <button onClick={() => handleStatusChange(request.id, "Approved")} className="button approve">
+                      Approve
+                    </button>
+                    <button onClick={() => handleStatusChange(request.id, "Rejected")} className="button reject">
+                      Reject
+                    </button>
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
-export default AdminPanel;
+export default AdminDoctorApproval;
