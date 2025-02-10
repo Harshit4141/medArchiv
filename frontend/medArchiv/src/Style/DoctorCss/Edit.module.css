@@ -5,7 +5,9 @@
     align-items: center;
     height: 100vh;
     background-color: #1890ff;
-    padding: 20px;
+    padding: 30px;
+    width: 100%;
+
   }
   
   .editCard {

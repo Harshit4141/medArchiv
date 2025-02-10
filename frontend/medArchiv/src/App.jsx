@@ -25,7 +25,8 @@ import Login from './Components/Login'
 import LandingPage from './Components/LandingPage'
 import EditDoctorProfile from './Components/Doctor/Edit'
 import PatientDashboard from './Components/Patient/PatientDashboard'
-
+import Admin from './Components/Admin/Admin'
+import EditPatientProfile from './Components/Patient/PatientEdit'
 function App() {
   const{Header, Sider } = Layout;
   const [darkTheme, setDarkTheme] = useState(true)
@@ -41,12 +42,13 @@ function App() {
   let [DoctorStatus,setDoctorStatus]=useState("Approved")
   return (
     <>
-     {/* <Routes>
+     <Routes>
      <Route path="/" element={<LandingPage/>}/>
      <Route path="/Login" element={<Login/>}/>
      <Route path="/PatientRegistration" element={<PRegistration/>}/>
      <Route path="/DoctorRegistration" element={<DRegistration/>}/>
-     </Routes> */}
+     <Route path="/Admin" element={<Admin/>}/>
+     </Routes>
     {check===0?
     
     DoctorStatus==="Approved"?
@@ -87,6 +89,7 @@ function App() {
        <Routes>
        {/* <Route path="/PatientRegistration" element={<PRegistration/>}/> */}
      <Route path="/Dashboard" element={<PatientDashboard/>}/>
+     <Route path="/edit" element={<EditPatientProfile/>}/>
      <Route path="/FindDoctor" element={<FindDoctor/>}/>
      <Route path="/PatientAppointment" element={<PatientAppointment />}/>
      <Route path="/PatientNotification" element={<PatientNotification />}/>
