@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import male from '../../assets/male.png'
 import female from '../../assets/female.png'
-import style from '../../Style/PatientCss/ViewDoctor.module.css'
+import style from '../../Style/PatientCss/ViewDoctorNotify.module.css'
 import arrow from '../../assets/messagearrow.png'
 import ratings from '../../assets/rating.png'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { format } from 'date-fns';
 
-function ViewDoctor() {
+function ViewDoctorNotify() {
 
-    const {id}=useParams();
+    const {Did,Aid}=useParams();
      let [input,setinput]=useState("");
         let inputchange=(event)=>{
             setinput(event.target.value)
         }
-    console.log(id)
+    console.log(Did)
       let [Doctor,setDoctor]=useState(
         {
             age: 0,
@@ -40,13 +40,18 @@ function ViewDoctor() {
             qualification: ""
         }
       )
+      let [msg,setmsg]=useState("");
+
       useEffect(()=>{
        
         const fetchEmp=async()=>{
             try{
-                const res = await fetch(`http://localhost:8080/Doctorapi/Doctor/${id}`);
+                const res = await fetch(`http://localhost:8080/Doctorapi/Doctor/${Did}`);
                 const data=await res.json();
                 setDoctor(data);
+                const res1 = await(await fetch(`http://localhost:8080/Appointmentapi/PaitentAppointmentBy/${Aid}`)).json();
+                // console.log(res1.message);
+                setmsg(res1.message);
             }
             catch(error){
                 console.error("Error in fetching user ",error.message);
@@ -54,67 +59,8 @@ function ViewDoctor() {
         }
         fetchEmp();
     
-    },[id]);
+    },[Did]);
 
- let BookAppointment =()=>{
-    const fetchEmp=async()=>{
-        
-        try{
-            let currentDateAndTime = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-             currentDateAndTime = new Date(currentDateAndTime); 
-            const appointment = {
-                patientId: 45,
-                createdAt: currentDateAndTime,
-                message: input,
-                status: "Pending",
-                doctorId: id,
-                appointmentTime: ""
-              };
-
-             
-            //   console.log(Appoint);
-            // setAppoint(appointment);
-
-            const res1 = await fetch('http://localhost:8080/Appointmentapi/Appointment',{
-                method:"post",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(appointment)
-            });
-            const data1 = await res1.json();
-            console.log("Employee Created : ",data1);
-
-           
-            let res= await(await fetch(`http://localhost:8080/Doctorapi/Doctor/${data1.doctorId}`)).json()
-            console.log(res+"hiii");
-              
-            const notification={
-                status: "pending",
-                appointmentTime: null,
-                createdAt: currentDateAndTime,
-                doctorId: data1.doctorId,
-                name: res.name,
-                pId: data1.patientId,
-                appointmentId: data1.id
-          }
-          console.log(notification);
-
-            const res2 = await fetch('http://localhost:8080/Notificationapi/Notifications',{
-                method:"post",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(notification)
-            });
-             const data2 = await res2.json();
-            console.log("Employee Created : ",data2);
-        }
-        catch(error){
-            console.error("Error in fetching user ",error.message);
-        }
-    }
-    fetchEmp();
-
- }
-    // console.log(Doctor);
-    // console.log(Appoint);
     return (
         <div className={style.DoctorDetail}>
 
@@ -184,16 +130,14 @@ function ViewDoctor() {
             </div>
 
             <div className={style.chatbox}>
-                                  <div className={style.chatmessage}>
-                                    <div className={style.person2div}>
-                                      <p className={style.person2}>{input}</p>
-                                    </div>
-                                  </div>
-                                  <div className={style.inputdiv}>
-                                    <input type="text" value={input} name="message" onChange={inputchange} />
-                                    <img src={arrow} alt="" className={style.arrowimg} />
-                                  </div>
-                                  <button className={style.btn} onClick={BookAppointment}>Book Appointment</button>
+                                  {/* <div className={style.chatmessage}> */}
+                                    {/* <div className={style.person2div}> */}
+                                    <p className={style.person3}>Your message  : <span className={style.person4}>{msg}</span></p>
+                                      {/* <p className={style.person4}></p> */}
+                                    {/* </div> */}
+                                  {/* </div> */}
+                                 
+                                  {/* <button className={style.btn} onClick={BookAppointment}>Book Appointment</button> */}
                         </div>
                      
                           
@@ -202,4 +146,4 @@ function ViewDoctor() {
     )
 }
 
-export default ViewDoctor
+export default ViewDoctorNotify

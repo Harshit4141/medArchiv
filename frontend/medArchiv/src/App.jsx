@@ -28,6 +28,7 @@ import PatientDashboard from './Components/Patient/PatientDashboard'
 import Admin from './Components/Admin/Admin'
 import EditPatientProfile from './Components/Patient/PatientEdit'
 import ViewDoctor from './Components/Patient/ViewDoctor'
+import ViewDoctorNotify from './Components/Patient/ViewDoctorNotify'
 function App() {
   const{Header, Sider } = Layout;
   const [darkTheme, setDarkTheme] = useState(true)
@@ -98,6 +99,9 @@ function App() {
      <Route path="/DoctorDetail/:id" element={<DoctorDetail />}/>
      <Route path="/DoctorDetail" element={<DoctorDetail />}/>
      <Route path="/ViewDoctor/:id" element={<ViewDoctor />}/>
+     <Route path="/ViewDoctorNotify/:Did/:Aid" element={<ViewDoctorNotify />}/>
+
+     ViewDoctorNotify
      
     </Routes>
      </Layout>

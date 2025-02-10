@@ -22,12 +22,12 @@ function PatientAppointment() {
         FetchDoctor();
       },[])
 
+
   return (
    <div className={style.findDoctor}>
     {
     Appointment.map((Appoint)=>
-       <DoctorCardAppoint Appointment={Appoint}/>
-       
+       <DoctorCardAppoint Appointment={Appoint} key={Appoint.id}/>
     )}
       
       </div>
