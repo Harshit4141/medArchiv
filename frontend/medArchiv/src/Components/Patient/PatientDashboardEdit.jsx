@@ -3,10 +3,15 @@ import "./PatientDashboardEdit.css";
 
 const PatientDashboardEdit = () => {
   const [patientInfo, setPatientInfo] = useState({
+    name:"",
+    phonrno:"",
+    dob:"",
     age: "",
     gender: "",
     height: "",
     weight: "",
+    state:"",
+    country:"",
     bloodGroup: "",
     bloodPressure: "",
     diabetes: "",
