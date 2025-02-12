@@ -41,6 +41,7 @@ function ViewDoctorNotify() {
         }
       )
       let [msg,setmsg]=useState("");
+      let [msg1,setmsg1]=useState("");
 
       useEffect(()=>{
        
@@ -52,6 +53,7 @@ function ViewDoctorNotify() {
                 const res1 = await(await fetch(`http://localhost:8080/Appointmentapi/PaitentAppointmentBy/${Aid}`)).json();
                 // console.log(res1.message);
                 setmsg(res1.message);
+                setmsg1(res1.dmessage);
             }
             catch(error){
                 console.error("Error in fetching user ",error.message);
@@ -133,7 +135,8 @@ function ViewDoctorNotify() {
                                   {/* <div className={style.chatmessage}> */}
                                     {/* <div className={style.person2div}> */}
                                     <p className={style.person3}>Your message  : <span className={style.person4}>{msg}</span></p>
-                                      {/* <p className={style.person4}></p> */}
+                                    <p className={style.person3}>Doctor message  : <span className={style.person4}>{msg1}</span></p>
+                                      {/* <p className={style.person4}>{msg1}</p> */}
                                     {/* </div> */}
                                   {/* </div> */}
                                  

@@ -37,7 +37,7 @@ function App() {
   }
   // 1->Patient
   // 0-> Doctor
-  let [check,setCheck]=useState(1)
+  let [check,setCheck]=useState(0)
   
   // Pending
   // Approved
@@ -68,7 +68,7 @@ function App() {
      <Route path="/PatientRegistration" element={<PRegistration/>}/> */}
     <Route path="/DStatus" element={<DoctorDashboard/>}/>
     <Route path="/DoctorAppointment" element={<DoctorAppointment />}/>
-    <Route path="/DoctorAppointmentDeatils/:pid" element={<DoctorAppointmentDeatils/>}/>
+    <Route path="/DoctorAppointmentDeatils/:pid/:aid" element={<DoctorAppointmentDeatils/>}/>
     <Route path="/DoctorNotification" element={<DoctorNotification />}/>
     <Route path="/Edit" element={<EditDoctorProfile />}/>
   
@@ -101,7 +101,6 @@ function App() {
      <Route path="/ViewDoctor/:id" element={<ViewDoctor />}/>
      <Route path="/ViewDoctorNotify/:Did/:Aid" element={<ViewDoctorNotify />}/>
 
-     ViewDoctorNotify
      
     </Routes>
      </Layout>

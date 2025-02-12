@@ -62,13 +62,16 @@
     font-weight:bold;
     color: white;
     border: 0.1rem solid rgb(68, 66, 66);
-    width: 70%;
+    /* width: 70%; */
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 11rem;
 }
 .Btn{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    /* justify-content:space-between; */
+    /* align-items: center; */
     margin-top: 1rem;
     /* background-color: aqua; */
     width: 100%;

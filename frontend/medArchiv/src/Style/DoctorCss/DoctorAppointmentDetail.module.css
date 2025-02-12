@@ -40,8 +40,9 @@
 .messagebox{
     background-color:white;
     display: flex;
+    flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
+    /* align-items: center; */
     border: 2px solid rgb(134, 132, 132);
     border-radius: 1rem;
     width: 30rem;
@@ -52,19 +53,26 @@
 
 }
 .message p{
-    padding: 1rem;
+    padding: 0.3rem;
     font-size:0.9rem;
     text-align:left;
     padding-top: 0rem;
 }
-.message span{
+.messages{
+    margin-left: 1rem;
+    /* background-color: aqua; */
+    /* padding-left: 4rem; */
+
+}
+.messageheading{
     padding: 1rem;
     font-size:0.9rem;
     text-align: left;
     /* background-color: aqua; */
     margin: 0rem;
     padding: 0rem;
-    line-height: 2rem;
+    /* line-height: 1rem; */
+    margin-top: 1rem;
     font-weight: bolder;
     padding-left: 1rem;
     color: rgb(6, 167, 216);
@@ -190,7 +198,7 @@ justify-content: space-between;
 .person1{
     float: left;
     margin: 0.5rem;
-    width: 60%;
+    /* width: 60%; */
     /* background-color: aqua; */
 }
 .person2{

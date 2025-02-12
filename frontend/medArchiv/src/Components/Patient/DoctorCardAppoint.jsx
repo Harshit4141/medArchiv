@@ -15,7 +15,7 @@ function DoctorCardAppoint({Appointment}) {
             const res= await(await fetch(`http://localhost:8080/Doctorapi/Doctor/${Appointment.doctorId}`)).json();
             setDoctor(res);
             console.log(res);
-  
+
           }catch(error)
           {
             console.log(error);
@@ -24,9 +24,9 @@ function DoctorCardAppoint({Appointment}) {
         FetchDoctor();
       },[])
 
-console.log(Doctor);
+// console.log(Doctor);
   return (
-    <>
+    <>{Appointment.status!="Complete"?
        <div className={style.card}>
                 <div>
                     <img src={Doctor.gender=="male"?male:female} className={style.img} alt="female" title="women" />
@@ -36,11 +36,12 @@ console.log(Doctor);
                     <p className={style.message}>{Doctor.specialization}</p>
                 </div>
                 <div className={style.buttonSection}>
-                      <Link to="/DoctorDetail"><div className={style.Btn}>
-                     <button className={style.Appointbtn} style={{backgroundColor:Appointment.status=="completed"?"green":Appointment.status=="Appoint"?"blue":"red"}}>{Appointment.status}</button>
-                    </div></Link> 
+                      <div className={style.Btn}>
+                     <button className={style.Appointbtn} style={{backgroundColor:Appointment.status=="Complete"?"green":Appointment.status=="Schedule"?"green":"rgb(250, 144, 6)"}}>{Appointment.status}</button>
+                    </div>
                 </div>
             </div>
+            :null}
     </>
   )
 }

@@ -19,11 +19,11 @@ function FindDoctor() {
     },[])
   return (
   <div className={style.findDoctor}>
-    {Doctor.map((Doct)=>{
-      return(
-        <DoctorCard Doctor={Doct}/>
-      );
-    })}
+    {Doctor.map((Doct,index)=>(
+      Doct.status==="Approved"?
+          <DoctorCard Doctor={Doct}key={index}/>:null
+      )
+    )}
    
   
    </div>

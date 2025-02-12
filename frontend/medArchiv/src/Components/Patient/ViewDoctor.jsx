@@ -40,6 +40,7 @@ function ViewDoctor() {
             qualification: ""
         }
       )
+      let [check,setCheck]=useState(0);
       useEffect(()=>{
        
         const fetchEmp=async()=>{
@@ -52,29 +53,36 @@ function ViewDoctor() {
                 console.error("Error in fetching user ",error.message);
             }
         }
+        setCheck(0);
         fetchEmp();
+        
     
     },[id]);
+
 
  let BookAppointment =()=>{
     const fetchEmp=async()=>{
         
         try{
+
+            setCheck(1);
+            let patientname = await(await fetch(`http://localhost:8080/Patientapi/getname/45`)).text()// patient id by local Storage
+            // console.log(res.name);
+
             let currentDateAndTime = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
              currentDateAndTime = new Date(currentDateAndTime); 
             const appointment = {
-                patientId: 45,
+                patientId: 45,// local storage se id aayega
                 createdAt: currentDateAndTime,
                 message: input,
                 status: "Pending",
                 doctorId: id,
-                appointmentTime: ""
+                appointmentTime: "",
+                pname:patientname
               };
 
-             
-            //   console.log(Appoint);
-            // setAppoint(appointment);
-
+              console.log(appointment);
+            
             const res1 = await fetch('http://localhost:8080/Appointmentapi/Appointment',{
                 method:"post",
                 headers:{"Content-Type":"application/json"},
@@ -85,14 +93,16 @@ function ViewDoctor() {
 
            
             let res= await(await fetch(`http://localhost:8080/Doctorapi/Doctor/${data1.doctorId}`)).json()
-            console.log(res+"hiii");
-              
+            
+             
+
             const notification={
-                status: "pending",
+                status: "Pending",
                 appointmentTime: null,
                 createdAt: currentDateAndTime,
                 doctorId: data1.doctorId,
-                name: res.name,
+                dname: res.name,
+                pname:patientname,  // patient id by local Storage
                 pId: data1.patientId,
                 appointmentId: data1.id
           }
@@ -189,11 +199,17 @@ function ViewDoctor() {
                                       <p className={style.person2}>{input}</p>
                                     </div>
                                   </div>
+                                  {check==0?
                                   <div className={style.inputdiv}>
+                                  
                                     <input type="text" value={input} name="message" onChange={inputchange} />
                                     <img src={arrow} alt="" className={style.arrowimg} />
                                   </div>
-                                  <button className={style.btn} onClick={BookAppointment}>Book Appointment</button>
+                                  :null}
+                                  {check==0?
+                                 <button className={style.btn} onClick={BookAppointment}>Book Appointment</button>:
+                                 <button className={style.btn}>Appointment Booked</button>
+                                }
                         </div>
                      
                           

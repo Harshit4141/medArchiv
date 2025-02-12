@@ -31,11 +31,11 @@ function PNotification({Notification}) {
                 return <tr className={style.data} key={index}>
                  <td>{notification.appointmentId}</td>
                  <td>{notification.doctorId}</td>
-                 <td>{notification.name}</td>
+                 <td>{notification.dname}</td>
                  <td>{notification.createdAt}</td>
-                 <td className={notification.status=="completed"?style.complete:notification.status=="pending"?style.pending:style.scheduled}>{notification.status}</td>
+                 <td className={notification.status=="Complete"?style.complete:notification.status=="Pending"?style.pending:style.scheduled}>{notification.status}</td>
                  <td>{notification.appointmentTime}</td>
-                 <td><Link to={`/ViewDoctorNotify/${notification.doctorId}/${notification.appointmentId}`}><button className={notification.status=="completed"?style.completebtn:notification.status=="pending"?style.pendingbtn:style.scheduledbtn} id={style.btn}>view</button> </Link></td>
+                 <td><Link to={`/ViewDoctorNotify/${notification.doctorId}/${notification.appointmentId}`}><button className={notification.status=="Complete"?style.completebtn:notification.status=="Pending"?style.pendingbtn:style.scheduledbtn} id={style.btn}>view</button> </Link></td>
              
              </tr>
              })}
