@@ -16,6 +16,7 @@ public class Doctor {
 	private Long Id;
 	@Column(unique = true)
 	private String EmailId;
+	private String Name;
 	private String Password;
 	@Column(unique = true)
 	private String PhoneNo;
@@ -34,13 +35,16 @@ public class Doctor {
 	private String AboutDoctor;
 	private Long PatientCount;
 	private Long AppointmentCount;
-	public Doctor(Long id, String emailId, String password, String phoneNo, String specialization, String qualification,
-			String experience, String licenceNumber, Date createdDate, Date dOB, int age, String gender,
-			String areaOfPractice, String state, String country, String aboutDoctor, Long patientCount,
-			Long appointmentCount) {
+	private int rating;
+	private String status;
+	public Doctor(Long id, String emailId, String name, String password, String phoneNo, String specialization,
+			String qualification, String experience, String licenceNumber, Date createdDate, Date dOB, int age,
+			String gender, String areaOfPractice, String state, String country, String aboutDoctor, Long patientCount,
+			Long appointmentCount, int rating, String status) {
 		super();
 		Id = id;
 		EmailId = emailId;
+		Name = name;
 		Password = password;
 		PhoneNo = phoneNo;
 		Specialization = specialization;
@@ -57,6 +61,8 @@ public class Doctor {
 		AboutDoctor = aboutDoctor;
 		PatientCount = patientCount;
 		AppointmentCount = appointmentCount;
+		this.rating = rating;
+		this.status = status;
 	}
 	public Doctor() {
 		super();
@@ -72,6 +78,12 @@ public class Doctor {
 	}
 	public void setEmailId(String emailId) {
 		EmailId = emailId;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
 	}
 	public String getPassword() {
 		return Password;
@@ -169,14 +181,27 @@ public class Doctor {
 	public void setAppointmentCount(Long appointmentCount) {
 		AppointmentCount = appointmentCount;
 	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "Doctor [Id=" + Id + ", EmailId=" + EmailId + ", Password=" + Password + ", PhoneNo=" + PhoneNo
-				+ ", Specialization=" + Specialization + ", Qualification=" + Qualification + ", Experience="
+		return "Doctor [Id=" + Id + ", EmailId=" + EmailId + ", Name=" + Name + ", Password=" + Password + ", PhoneNo="
+				+ PhoneNo + ", Specialization=" + Specialization + ", Qualification=" + Qualification + ", Experience="
 				+ Experience + ", LicenceNumber=" + LicenceNumber + ", CreatedDate=" + CreatedDate + ", DOB=" + DOB
 				+ ", age=" + age + ", Gender=" + Gender + ", AreaOfPractice=" + AreaOfPractice + ", State=" + State
 				+ ", Country=" + Country + ", AboutDoctor=" + AboutDoctor + ", PatientCount=" + PatientCount
-				+ ", AppointmentCount=" + AppointmentCount + "]";
+				+ ", AppointmentCount=" + AppointmentCount + ", rating=" + rating + ", status=" + status + "]";
 	}
+	
 	
 }

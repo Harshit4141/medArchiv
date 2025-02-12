@@ -19,6 +19,7 @@ public class Patient {
 	@Column(unique = true)
 	private String PhoneNumber;
 	private Date DOB;
+	private String Name;
 	private int Age;
 	private String Gender;
 	private String State;
@@ -35,15 +36,17 @@ public class Patient {
 	private String DrugUse;
 	private String AnxietyAttack;
 	private String BreathingProblem;
-	public Patient(long id, String emailId, String phoneNumber, Date dOB, int age, String gender, String state,
-			String country, int weight, int height, String bloodGroup, String bloodPressure, String diabetes,
-			String allergies, String disease, String kidneyProblem, String heartProblem, String drugUse,
-			String anxietyAttack, String breathingProblem) {
+	
+	public Patient(long id, String emailId, String phoneNumber, Date dOB, String name, int age, String gender,
+			String state, String country, int weight, int height, String bloodGroup, String bloodPressure,
+			String diabetes, String allergies, String disease, String kidneyProblem, String heartProblem,
+			String drugUse, String anxietyAttack, String breathingProblem) {
 		super();
 		Id = id;
 		EmailId = emailId;
 		PhoneNumber = phoneNumber;
 		DOB = dOB;
+		Name = name;
 		Age = age;
 		Gender = gender;
 		State = state;
@@ -184,15 +187,22 @@ public class Patient {
 	public void setBreathingProblem(String breathingProblem) {
 		BreathingProblem = breathingProblem;
 	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
 	@Override
 	public String toString() {
-		return "Patient [Id=" + Id + ", EmailId=" + EmailId + ", PhoneNumber=" + PhoneNumber + ", DOB=" + DOB + ", Age="
-				+ Age + ", Gender=" + Gender + ", State=" + State + ", Country=" + Country + ", Weight=" + Weight
-				+ ", Height=" + Height + ", BloodGroup=" + BloodGroup + ", BloodPressure=" + BloodPressure
-				+ ", Diabetes=" + Diabetes + ", Allergies=" + Allergies + ", Disease=" + Disease + ", KidneyProblem="
-				+ KidneyProblem + ", HeartProblem=" + HeartProblem + ", DrugUse=" + DrugUse + ", AnxietyAttack="
-				+ AnxietyAttack + ", BreathingProblem=" + BreathingProblem + "]";
+		return "Patient [Id=" + Id + ", EmailId=" + EmailId + ", PhoneNumber=" + PhoneNumber + ", DOB=" + DOB
+				+ ", Name=" + Name + ", Age=" + Age + ", Gender=" + Gender + ", State=" + State + ", Country=" + Country
+				+ ", Weight=" + Weight + ", Height=" + Height + ", BloodGroup=" + BloodGroup + ", BloodPressure="
+				+ BloodPressure + ", Diabetes=" + Diabetes + ", Allergies=" + Allergies + ", Disease=" + Disease
+				+ ", KidneyProblem=" + KidneyProblem + ", HeartProblem=" + HeartProblem + ", DrugUse=" + DrugUse
+				+ ", AnxietyAttack=" + AnxietyAttack + ", BreathingProblem=" + BreathingProblem + "]";
 	}
+	
 	
 	
 }

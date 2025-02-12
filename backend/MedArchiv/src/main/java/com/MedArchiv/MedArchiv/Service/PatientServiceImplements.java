@@ -12,9 +12,8 @@ public class PatientServiceImplements implements PatientService{
 	@Autowired
 	private PatientRepository patientRepository;
 	@Override
-	public Patient readbyid(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Patient readbyid(long id) {
+		return patientRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -39,6 +38,13 @@ public class PatientServiceImplements implements PatientService{
 	public Iterable<Patient> findAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getName(long id) {
+		Patient p1=patientRepository.findById(id).orElse(null);
+		String name=p1.getName();
+		return name;
 	}
 
 }

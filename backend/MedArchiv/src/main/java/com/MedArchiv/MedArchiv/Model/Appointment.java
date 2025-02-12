@@ -14,22 +14,24 @@ public class Appointment {
 	private long id;
 	private long patientId;
 	private long DoctorId;
-	private String userType;
-	private Date AppointmentTime;
+	private String pname;
+	private String AppointmentTime;
 	private Date createdAt;
 	private String message;
 	private String Status;
-	public Appointment(long id, long patientId, long doctorId, String userType, Date appointmentTime, Date createdAt,
-			String message, String status) {
+	private String Dmessage;
+	public Appointment(long id, long patientId, long doctorId, String pname, String appointmentTime, Date createdAt,
+			String message, String status, String dmessage) {
 		super();
 		this.id = id;
 		this.patientId = patientId;
 		DoctorId = doctorId;
-		this.userType = userType;
+		this.pname = pname;
 		AppointmentTime = appointmentTime;
 		this.createdAt = createdAt;
 		this.message = message;
 		Status = status;
+		Dmessage = dmessage;
 	}
 	public Appointment() {
 		super();
@@ -52,16 +54,16 @@ public class Appointment {
 	public void setDoctorId(long doctorId) {
 		DoctorId = doctorId;
 	}
-	public String getUserType() {
-		return userType;
+	public String getPname() {
+		return pname;
 	}
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
-	public Date getAppointmentTime() {
+	public String getAppointmentTime() {
 		return AppointmentTime;
 	}
-	public void setAppointmentTime(Date appointmentTime) {
+	public void setAppointmentTime(String appointmentTime) {
 		AppointmentTime = appointmentTime;
 	}
 	public Date getCreatedAt() {
@@ -82,11 +84,17 @@ public class Appointment {
 	public void setStatus(String status) {
 		Status = status;
 	}
+	public String getDmessage() {
+		return Dmessage;
+	}
+	public void setDmessage(String dmessage) {
+		Dmessage = dmessage;
+	}
 	@Override
 	public String toString() {
-		return "Appointment [id=" + id + ", patientId=" + patientId + ", DoctorId=" + DoctorId + ", userType="
-				+ userType + ", AppointmentTime=" + AppointmentTime + ", createdAt=" + createdAt + ", message="
-				+ message + ", Status=" + Status + "]";
+		return "Appointment [id=" + id + ", patientId=" + patientId + ", DoctorId=" + DoctorId + ", pname=" + pname
+				+ ", AppointmentTime=" + AppointmentTime + ", createdAt=" + createdAt + ", message=" + message
+				+ ", Status=" + Status + ", Dmessage=" + Dmessage + "]";
 	}
 	
 }
