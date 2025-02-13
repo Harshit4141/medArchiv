@@ -46,7 +46,6 @@ function Login() {
       }
 
       if (response.ok && data.status === "success") {
-        // Local storage kay liye
         resp(data.userData.id);
   
         localStorage.setItem("userId", data.userData.id);
