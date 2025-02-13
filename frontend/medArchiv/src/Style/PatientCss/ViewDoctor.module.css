@@ -7,7 +7,7 @@
     /* width: 80%; */
     float: right;
     justify-content: center;
-    align-items:flex-start;
+    /* align-items:flex-start; */
     /* align-content: center; */
     flex-wrap: wrap; 
     font-family: "Poppins", serif;
@@ -17,6 +17,7 @@
     /* margin-top: 5rem; */
     /* margin-left: 18%; */
     /* flex-direction: ; */
+    /* background-color: aquamarine; */
 }
 .card{
     background-color: rgb(217, 217, 217);
@@ -34,6 +35,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 55%;
+    /* background-color: aqua; */
     /* flex:1; */
 }
 .card1{
@@ -72,8 +74,9 @@
     /* align-items: center; */
     flex-wrap: wrap;
     /* background-color: antiquewhite; */
-    margin: 0rem;
+    margin: 2rem;
     margin-top: 2rem;
+    width: 100%;
     
 }
 .img{

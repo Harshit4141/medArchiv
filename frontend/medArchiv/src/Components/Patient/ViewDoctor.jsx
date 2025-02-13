@@ -66,13 +66,14 @@ function ViewDoctor() {
         try{
 
             setCheck(1);
-            let patientname = await(await fetch(`http://localhost:8080/Patientapi/getname/45`)).text()// patient id by local Storage
+            const userId = localStorage.getItem('userId');
+            let patientname = await(await fetch(`http://localhost:8080/Patientapi/getname/${userId}`)).text()// patient id by local Storage
             // console.log(res.name);
 
             let currentDateAndTime = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
              currentDateAndTime = new Date(currentDateAndTime); 
             const appointment = {
-                patientId: 45,// local storage se id aayega
+                patientId: userId,// local storage se id aayega
                 createdAt: currentDateAndTime,
                 message: input,
                 status: "Pending",
@@ -102,7 +103,7 @@ function ViewDoctor() {
                 createdAt: currentDateAndTime,
                 doctorId: data1.doctorId,
                 dname: res.name,
-                pname:patientname,  // patient id by local Storage
+                pname:patientname, 
                 pId: data1.patientId,
                 appointmentId: data1.id
           }

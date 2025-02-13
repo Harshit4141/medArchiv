@@ -8,9 +8,10 @@ function PatientAppointment() {
 
   let [Appointment,setAppointment]=useState([])
       useEffect(()=>{
+        const userId = localStorage.getItem('userId');
         const FetchDoctor=async()=>{
           try{
-            const res= await(await fetch("http://localhost:8080/Appointmentapi/PaitentAppointment/45")).json();// yha per id dalna hai patient ka
+            const res= await(await fetch(`http://localhost:8080/Appointmentapi/PaitentAppointment/${userId}`)).json();// yha per id dalna hai patient ka
             setAppointment(res);
             console.log(res);
   

@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import style from '../Style/OthersCss/PRegistration.module.css'
+import { useNavigate } from "react-router-dom";
+import style from '../Style/OthersCss/PRegistration.module.css';
+
 function PRegistration() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    emailId: "",
     password: "",
     confirmPassword: "",
-    phone: "",
-    birthDate: "",
+    phoneNumber: "",
+    age: "",
     gender: "Male",
+    state: "",
+    country: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,14 +25,46 @@ function PRegistration() {
     setFormData({ ...formData, gender: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-    console.log("Patient Registered:", formData);
-    alert("Patient Registered Successfully!");
+
+    const patientData = {
+      name: formData.name,
+      emailId: formData.emailId,
+      phoneNumber: formData.phoneNumber,
+      age: parseInt(formData.age),
+      gender: formData.gender,
+      state: formData.state,
+      country: formData.country,
+      password:formData.password
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/patientloginapi/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(patientData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Registration failed");
+      }
+
+      const responseData = await response.text(); 
+      alert(responseData);
+      navigate("/login");
+
+    } catch (error) {
+      alert("Registration failed: " + error.message);
+    }
   };
 
   return (
@@ -36,13 +74,13 @@ function PRegistration() {
 
         <form onSubmit={handleSubmit}>
           <div className={style.formGroup}>
-            <p>Name:</p>
+            <p>Full Name:</p>
             <input type="text" name="name" value={formData.name} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
             <p>Email:</p>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" name="emailId" value={formData.emailId} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
@@ -57,17 +95,27 @@ function PRegistration() {
 
           <div className={style.formGroup}>
             <p>Phone Number:</p>
-            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
+            <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
-            <p>Date of Birth:</p>
-            <input type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} required />
+            <p>Age:</p>
+            <input type="number" name="age" value={formData.age} onChange={handleChange} required />
+          </div>
+
+          <div className={style.formGroup}>
+            <p>State:</p>
+            <input type="text" name="state" value={formData.state} onChange={handleChange} required />
+          </div>
+
+          <div className={style.formGroup}>
+            <p>Country:</p>
+            <input type="text" name="country" value={formData.country} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
             <p>Gender:</p>
-            <div className={style.genderGptions}>
+            <div className={style.genderOptions}>
               <label>
                 <input type="radio" name="gender" value="Male" checked={formData.gender === "Male"} onChange={handleGenderChange} />
                 Male

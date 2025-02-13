@@ -1,32 +1,45 @@
 import { Menu } from 'antd';
 import { HomeOutlined ,SelectOutlined,NotificationOutlined,HistoryOutlined,LogoutOutlined
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 const MenuList = ({darkTheme}) => {
+
+    const navigate = useNavigate();
+    let handel=()=>{
+        localStorage.clear();
+        navigate("/");
+    }
+
+    let dashboard=()=>{
+        navigate("/Dashboard");
+    }
+    let doctorappointment=()=>{
+        navigate("/DoctorAppointment");
+    }
+
+    let doctorNotification=()=>{
+        navigate("/DoctorNotification");   
+    }
+
     return(
         <Menu theme = {darkTheme ? 'dark' : 'light'} mode ="inline" className="menu-bar">
-          <Link to="/DStatus"><Menu.Item key="dashboard" icon={ <HomeOutlined />}>
+          <Menu.Item key="dashboard" icon={ <HomeOutlined />}onClick={dashboard}>
              Dashboard
-            </Menu.Item></Link>
+            </Menu.Item>
             
 
-             <Link to="/DoctorAppointment"><Menu.Item key="appointment" icon={ <SelectOutlined />}>
+             <Menu.Item key="appointment" icon={ <SelectOutlined />}onClick={doctorappointment}>
              Appointments
             </Menu.Item>
-            </Link>
+           
             
-            <Link to="/DoctorNotification"><Menu.Item key="notification" icon={ <NotificationOutlined />}>
+            <Menu.Item key="notification" icon={ <NotificationOutlined />}onClick={doctorNotification}>
              Notifications
-            </Menu.Item></Link>
-             
-            {/* <Link to="/DoctorHistory"><Menu.Item key="history" icon={ <HistoryOutlined />}>
-             History
             </Menu.Item>
-            </Link> */}
 
-            <Link to="/DoctorDashboard"><Menu.Item key="logout" icon={ <LogoutOutlined /> }>
+            <Menu.Item key="logout" icon={ <LogoutOutlined /> } onClick={handel}>
              Logout
-            </Menu.Item></Link>
+            </Menu.Item>
             
         </Menu>
     )

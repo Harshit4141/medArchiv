@@ -8,4 +8,5 @@ import com.MedArchiv.MedArchiv.Model.Notification;
 public interface AdminService {
 		
 					public Admin readbyid(int id);
+					public Admin loginAdmin(String emailId, String password);
 	}

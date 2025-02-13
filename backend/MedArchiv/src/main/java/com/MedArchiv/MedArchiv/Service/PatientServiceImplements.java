@@ -16,29 +16,6 @@ public class PatientServiceImplements implements PatientService{
 		return patientRepository.findById(id).orElse(null);
 	}
 
-	@Override
-	public Patient save(Patient p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Patient update(Patient p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Iterable<Patient> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String getName(long id) {
@@ -46,5 +23,66 @@ public class PatientServiceImplements implements PatientService{
 		String name=p1.getName();
 		return name;
 	}
+	@Override
+    public Patient save(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
+    public Patient update(Patient patient) {
+        if (patientRepository.existsById(patient.getId())) {
+            return patientRepository.save(patient);
+        } else {
+            throw new RuntimeException("Patient not found with ID: " + patient.getId());
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        if (patientRepository.existsById(id)) {
+            patientRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Patient not found with ID: " + id);
+        }
+    }
+
+    @Override
+    public Iterable<Patient> findAll() {
+        return patientRepository.findAll();
+    }
+    @Override
+    public Patient loginPatient(String emailId, String password) {
+        return patientRepository.findByEmailIdAndPassword(emailId, password).orElse(null);
+    }
+    @Override
+    public Patient updatePatient(Integer id, Patient patientDetails) {
+        return patientRepository.findById(id).map(patient -> {
+            
+            patient.setEmailId(patientDetails.getEmailId());
+            patient.setPhoneNumber(patientDetails.getPhoneNumber());
+            patient.setDob(patientDetails.getDob());
+            patient.setAge(patientDetails.getAge());
+            patient.setGender(patientDetails.getGender());
+            patient.setState(patientDetails.getState());
+            patient.setCountry(patientDetails.getCountry());
+            
+            patient.setBloodGroup(patientDetails.getBloodGroup());
+            patient.setAllergies(patientDetails.getAllergies());
+            patient.setAnxietyAttack(patientDetails.getAnxietyAttack());
+            patient.setBloodPressure(patientDetails.getBloodPressure());
+            patient.setBreathingProblem(patientDetails.getBreathingProblem());
+            patient.setHeight(patientDetails.getHeight());
+            patient.setWeight(patientDetails.getWeight());
+            patient.setDiabetes(patientDetails.getDiabetes());
+            patient.setDisease(patientDetails.getDisease());
+            patient.setKidneyProblem(patientDetails.getKidneyProblem());
+            patient.setHeartProblem(patientDetails.getHeartProblem());
+            patient.setDrugUse(patientDetails.getDrugUse());
+           
+            
+            return patientRepository.save(patient);
+        }).orElse(null);
+    }
+
 
 }

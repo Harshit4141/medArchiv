@@ -39,16 +39,14 @@ function DAppointment() {
         }
           ]);
 
-
+          const userId = localStorage.getItem('userId');
 
           let [DoctorAppointment,setDoctorAppointment]=useState([])
               useEffect(()=>{
                 const FetchDoctor=async()=>{
                   try{
-                    const res= await(await fetch("http://localhost:8080/Appointmentapi/DoctorAppointmentBy/3")).json();// yha per id dalna hai doctorid by local storage ka
+                    const res= await(await fetch(`http://localhost:8080/Appointmentapi/DoctorAppointmentBy/${userId}`)).json();// yha per id dalna hai doctorid by local storage ka
                     setDoctorAppointment(res);
-                    // console.log(res);
-                    // const patient= await(await fetch(`http://localhost:8080/Patientapi/getdata/${res.patientId}`)).json();
                     console.log(res);
             
                   }catch(error)
@@ -113,7 +111,7 @@ return(
                 <option value="2:30 PM">2:30 PM</option>
                 <option value="3:00 PM">3:00 PM</option>
             </select>
-        <Link to={`/DoctorAppointmentDeatils/${PatientD.patientId}/${PatientD.id}`}><button className={style.view}>View</button></Link>
+        <Link to={`/DoctorAppointmentDetail/${PatientD.patientId}/${PatientD.id}`}><button className={style.view}>View</button></Link>
         
         </div>
 

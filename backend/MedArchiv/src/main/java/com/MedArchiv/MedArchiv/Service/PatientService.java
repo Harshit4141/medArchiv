@@ -6,9 +6,11 @@ import com.MedArchiv.MedArchiv.Model.Patient;
 @Service
 public interface PatientService {
 		public Patient readbyid(long id);
-		public Patient save(Patient p);
-		public Patient update(Patient p);
-		public void delete(int id);
-		public Iterable<Patient>findAll();
 		public String getName(long id);
+		Patient save(Patient patient);
+	    Patient update(Patient patient);
+	    void delete(Long id);
+	    Iterable<Patient> findAll();
+	    Patient loginPatient(String emailId, String password);
+	    public Patient updatePatient(Integer id, Patient patientDetails);
 	}

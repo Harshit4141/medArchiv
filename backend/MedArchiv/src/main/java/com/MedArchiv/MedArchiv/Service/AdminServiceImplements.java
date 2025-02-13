@@ -15,5 +15,9 @@ public class AdminServiceImplements implements AdminService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	 @Override
+	    public Admin loginAdmin(String emailId, String password) {
+	        return adminRepository.findByEmailIdAndPassword(emailId, password).orElse(null);
+	    }
 
 }

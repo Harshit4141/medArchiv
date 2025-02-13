@@ -5,9 +5,10 @@ function DNotification() {
 
   let [Notification,setNotification]=useState([])
   useEffect(()=>{
+    const userId = localStorage.getItem('userId');
     const FetchDoctor=async()=>{
       try{
-        const res= await(await fetch("http://localhost:8080/Notificationapi/NotificationByDoctor/3")).json();// yha per id dalna hai patient ka
+        const res= await(await fetch(`http://localhost:8080/Notificationapi/NotificationByDoctor/${userId}`)).json();// yha per id dalna hai patient ka
         setNotification(res);
        //  console.log(res);
 
@@ -41,7 +42,7 @@ function DNotification() {
                  <td>{notification.createdAt}</td>
                  <td className={notification.status=="Complete"?style.complete:notification.status=="Pending"?style.pending:style.scheduled}>{notification.status}</td>
                  <td>{notification.appointmentTime}</td>
-                 <td><Link to={`/DoctorAppointmentDeatils/${notification.pId}/${notification.id}`}><button className={notification.status=="Complete"?style.completebtn:notification.status=="Pending"?style.pendingbtn:style.scheduledbtn} id={style.btn}>view</button> </Link></td>
+                 <td><Link to={`/DoctorAppointmentDetail/${notification.pId}/${notification.id}`}><button className={notification.status=="Complete"?style.completebtn:notification.status=="Pending"?style.pendingbtn:style.scheduledbtn} id={style.btn}>view</button> </Link></td>
              </tr>
              })}
              

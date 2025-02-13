@@ -1,49 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import style from '../../Style/DoctorCss/DoctorDashboard.module.css'
+import style from '../../Style/DoctorCss/DoctorDashboard.module.css';
+import male from '../../assets/male.png'
+import female from '../../assets/female.png'
 const DoctorDashboard = () => {
   const navigate = useNavigate();
-
-  const [doctorData, setDoctorData] = useState({
-    name: "Dr. Ram Mohan",
-    email: "ram12@google.com",
-    password: "password123",
-    confirmPassword: "password123",
-    areaOfPractice: "Surgery",
-    experience: "5 years",
-    qualification: "MBBS, MD",
-    phone: "87658564",
-    district: "Ranchi",
-    state: "Jharkhand",
-    country: "India",
-    birthday: "1990-01-11",
-    age: "35",
-    gender: "Male",
-    about: "Working at AIMS Delhi from 2020.",
-    profilePicture: null,
-  });
-
+  const [doctorData, setDoctorData] = useState(null);
   const [isEditingAbout, setIsEditingAbout] = useState(false);
+  const [aboutText, setAboutText] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "about" && value.length > 250) {
-      alert("About section can have 250 characters allowed.");
+  useEffect(() => {
+    const fetchDoctorData = async () => {
+      try {
+        const doctorId = localStorage.getItem("userId");
+        if (!doctorId) {
+          alert("Doctor ID not found. Please log in again.");
+          navigate("/login");
+          return;
+        }
+
+        const response = await fetch(`http://localhost:8080/doctordashboardapi/${doctorId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setDoctorData(data);
+          setAboutText(data.about || ""); 
+        } else {
+          alert("Failed to fetch doctor data.");
+        }
+      } catch (error) {
+        console.error("Error fetching doctor data:", error);
+      }
+    };
+
+    fetchDoctorData();
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    navigate("/login");
+  };
+
+  const handleEditProfile = () => {
+    navigate("/edit");
+  };
+
+  const handleAboutChange = (e) => {
+    if (e.target.value.length > 250) {
+      alert("About section can have 250 characters only.");
       return;
     }
-    setDoctorData({ ...doctorData, [name]: value });
+    setAboutText(e.target.value);
   };
 
-  const handleProfilePictureChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setDoctorData({ ...doctorData, profilePicture: reader.result });
-      };
-      reader.readAsDataURL(file);
+  const handleSaveAbout = async () => {
+    if (!doctorData) return;
+
+    try {
+      const response = await fetch(`http://localhost:8080/doctordashboardapi/update/${doctorData.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          aboutDoctor: aboutText, 
+        }),
+      });
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        setDoctorData(updatedData); 
+        setIsEditingAbout(false);
+      } else {
+        alert("Failed to update 'About' section.");
+      }
+    } catch (error) {
+      console.error("Error updating about section:", error);
     }
   };
+
+  if (!doctorData) {
+    return <div className={style.loading}>Loading doctor data...</div>;
+  }
 
   return (
     <div className={style.dashboardContainer}>
@@ -51,42 +88,36 @@ const DoctorDashboard = () => {
         <div className={style.profileSection}>
           
           <div className={style.profileImage}>
-            {doctorData.profilePicture ? (
-              <img src={doctorData.profilePicture} alt="Profile" className={style.uploadedImage} />
-            ) : (
-              <div className={style.placeholderImage}>Upload Image</div>
-            )}
+           
+              <img src={doctorData.gender=="male"?male:female} alt="Profile" className={style.uploadedImage} />
           </div>
 
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleProfilePictureChange}
-            className={style.uploadButton}
-          />
           <div className={style.profileDetails}>
             <p className={style.profileName}>{doctorData.name}</p>
             <p className={style.profileQualification}>{doctorData.qualification}</p>
           </div>
+
           <div className={style.aboutDr}>
             <h3>About Dr</h3>
             {isEditingAbout ? (
               <>
                 <textarea
-                  name="about"
-                  value={doctorData.about}
-                  onChange={handleInputChange}
+                  value={aboutText}
+                  onChange={handleAboutChange}
                   maxLength="250"
                   className={style.aboutTextarea}
                 />
-                <p>{250 - doctorData.about.length} characters left</p>
-                <button onClick={() => setIsEditingAbout(false)} className={style.saveButton}>
+                <p>{250 - aboutText.length} characters left</p>
+                <button onClick={handleSaveAbout} className={style.saveButton}>
                   Save
+                </button>
+                <button onClick={() => setIsEditingAbout(false)} className={style.cancelButton}>
+                  Cancel
                 </button>
               </>
             ) : (
               <>
-                <p>{doctorData.about}</p>
+                <p>{doctorData.aboutDoctor}</p>
                 <button onClick={() => setIsEditingAbout(true)} className={style.editAboutButton}>
                   Edit
                 </button>
@@ -94,29 +125,35 @@ const DoctorDashboard = () => {
             )}
           </div>
         </div>
-        <div className={style.infoBox}>Patient Count: 60</div>
-        <div className={style.infoBox}>Appointment Count: 10</div>
+
+     
       </div>
+
       <div className={style.bottomSection}>
         <div className={style.infoCard}>
           <h3>Personal Info</h3>
           <p><b>Name:</b> {doctorData.name}</p>
-          <p><b>Email:</b> {doctorData.email}</p>
-          <p><b>Phone:</b> {doctorData.phone}</p>
-          <p><b>Birthday:</b> {doctorData.birthday}</p>
+          <p><b>Email:</b> {doctorData.emailId}</p>
+          <p><b>Phone:</b> {doctorData.phoneNo}</p>
+          <p><b>Birthday:</b> {doctorData.dob}</p>
           <p><b>Age:</b> {doctorData.age}</p>
           <p><b>Gender:</b> {doctorData.gender}</p>
         </div>
+
         <div className={style.infoCard}>
           <h3>Professional Info</h3>
-          <p><b>Area of Practice:</b> {doctorData.areaOfPractice}</p>
-          <p><b>Experience:</b> {doctorData.experience}</p>
+          <p><b>Specialization:</b> {doctorData.specialization}</p>
+          <p><b>Experience:</b> {doctorData.experience} years</p>
           <p><b>Qualification:</b> {doctorData.qualification}</p>
-          <p><b>District:</b> {doctorData.district}</p>
+          <p><b>Area of Practice:</b> {doctorData.areaOfPractice}</p>
           <p><b>State:</b> {doctorData.state}</p>
           <p><b>Country:</b> {doctorData.country}</p>
         </div>
-        <button className={style.editButton} onClick={() => navigate("/edit")}>Edit</button>
+
+        <div className={style.buttonGroup}>
+          <button className={style.editButton} onClick={handleEditProfile}>Edit Profile</button>
+       
+        </div>
       </div>
     </div>
   );

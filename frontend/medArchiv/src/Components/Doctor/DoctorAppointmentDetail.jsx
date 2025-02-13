@@ -9,6 +9,7 @@ import 'react'
 
 
 function DoctorAppointmentDetail() {
+  
   const { pid,aid } = useParams();
   let [input, setinput] = useState("");
   const navigate = useNavigate();
@@ -39,18 +40,10 @@ function DoctorAppointmentDetail() {
       FetchDoctor();
     },[])
 
-
-
-// console.log(Patient);
-// console.log(Appoint);
 let message={
   message:input
 }
-// let[Appointment,setAppointment]=useState(
-//   {
-//     dmessage:""
-//   }
-// );
+
 
 let senddata= async()=>{
   const res = await (await fetch(`http://localhost:8080/Appointmentapi/updateAppoinmentmessage/${Appoint.id}`, {
@@ -81,7 +74,7 @@ navigate(0);
           <div className={style.messagebox}>
             <p className={style.messageheading}>Message</p>
             <p className={style.messages}>{Appoint.message}
-              {/* I am writing to express concern about persisten in my [specify which hand,  left/right] hand, particularly when [describe specific actions that cause pain, like gripping, making a fist, or typing]. This pain has been present for [duration of pain] and is starting to interfere with my daily activities. */}
+              I am writing to express concern about persisten in my [specify which hand,  left/right] hand, particularly when [describe specific actions that cause pain, like gripping, making a fist, or typing]. This pain has been present for [duration of pain] and is starting to interfere with my daily activities.
               </p>
           </div>
         </div>

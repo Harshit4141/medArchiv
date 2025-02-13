@@ -1,24 +1,45 @@
 import React, { useState } from "react";
+
 import './PatientDashboardEdit.css'
+import { useNavigate } from "react-router-dom";
 
 const PatientDashboardEdit = () => {
+  const navigate = useNavigate();
   const [patientInfo, setPatientInfo] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    bloodGroup: "",
-    bloodPressure: "",
-    diabetes: "",
-    allergies: "",
-    disease: "",
-    kidneyProblem: "",
-    heartProblem: "",
-    drugUse: "",
-    anxietyAttack: "",
-    breathingProblem: "",
-    stroke: "",
+  
+    id: 1,
+    emailId: null,
+    password: "12345",
+    phoneNumber: null,
+    name:"",
+    dob: null,
+    age: 98,
+    gender: null,
+    state: null,
+    country: null,
+    weight: 0,
+    height: 0,
+    bloodGroup: null,
+    bloodPressure: null,
+    diabetes: null,
+    allergies: null,
+    disease: null,
+    kidneyProblem: null,
+    heartProblem: null,
+    drugUse: null,
+    anxietyAttack: null,
+    breathingProblem: null
   });
+  const userId = localStorage.getItem('userId');
+
+let patientdata=async()=>{
+  console.log(patientInfo)
+const res=await(await fetch(`http://localhost:8080/Patientapi/updatePatient/${userId}`, {
+  method: "PATCH",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(patientInfo),
+})).json();
+}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +49,7 @@ const PatientDashboardEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Updated Patient Information:", patientInfo);
+    navigate("/Dashboard");
   };
 
   return (
@@ -42,8 +64,8 @@ const PatientDashboardEdit = () => {
           <label>Gender:</label>
           <select name="gender" value={patientInfo.gender} onChange={handleChange} required>
             <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -78,10 +100,9 @@ const PatientDashboardEdit = () => {
             <input type="text" name={field} value={patientInfo[field]} onChange={handleChange} />
           </div>
         ))}
-        <button type="submit" className="button submit">Save</button>
+        <button type="submit" onClick={patientdata} className="button submit">Save</button>
       </form>
     </div>
   );
 };
-
 export default PatientDashboardEdit;

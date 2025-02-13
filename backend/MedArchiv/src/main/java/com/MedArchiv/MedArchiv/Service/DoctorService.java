@@ -8,12 +8,16 @@ import com.MedArchiv.MedArchiv.Model.Doctor;
 
 @Service
 public interface DoctorService {
-
-//	public Doctor readbyid(int id);
-//	public Doctor save(Doctor d);
-//	public Doctor update(Doctor d);
-//	public void delete(int id);
+	    Doctor readById(Long id);
+	    Doctor save(Doctor doctor);
+	    Doctor update(Doctor doctor);
+	    void delete(Long id);
+	    Iterable<Doctor> findAll();
+	    
+	    Doctor loginDoctor(String emailId, String password);
 	public List<Doctor> getAllDoctor();
 	public Doctor getDoctorById(Long id);
+	public Doctor updateDoctorStatus(Long id,String status);
+	public String status(long id);
 }
 

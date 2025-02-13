@@ -5,7 +5,8 @@ function PatientNotification() {
        useEffect(()=>{
          const FetchDoctor=async()=>{
            try{
-             const res= await(await fetch("http://localhost:8080/Notificationapi/Notification/45")).json();// yha per id dalna hai patient ka
+            const userId = localStorage.getItem('userId');
+             const res= await(await fetch(`http://localhost:8080/Notificationapi/Notification/${userId}`)).json();// yha per id dalna hai patient ka
              setNotification(res);
             //  console.log(res);
    

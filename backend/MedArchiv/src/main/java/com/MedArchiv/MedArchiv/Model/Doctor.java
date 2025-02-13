@@ -11,56 +11,62 @@ import jakarta.persistence.Id;
 @Entity
 public class Doctor {
 
-	@Id
-	 @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
-	@Column(unique = true)
-	private String EmailId;
-	private String Name;
-	private String Password;
-	@Column(unique = true)
-	private String PhoneNo;
-	private String Specialization;
-	private String Qualification;
-	private String Experience;
-	@Column(unique = true)
-	private String LicenceNumber;
-	private Date  CreatedDate;
-	private Date DOB;
-	private int age;
-	private String Gender;
-	private String AreaOfPractice;
-	private String State;
-	private String Country;
-	private String AboutDoctor;
-	private Long PatientCount;
-	private Long AppointmentCount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+
+    @Column(unique = true)
+    private String emailId;
+    
+    private String password;
+
+    @Column(unique = true)
+    private String phoneNo;
+
+    private String specialization;
+    private String qualification;
+    private String experience;
+
+    @Column(unique = true)
+    private String licenceNumber;
+
+    private Date createdDate;
+    private Date dob;
+    private int age;
+    private String gender;
+    private String areaOfPractice;
+    private String state;
+    private String country;
+    private String aboutDoctor;
+    private Long patientCount;
+    private Long appointmentCount;
 	private int rating;
 	private String status;
-	public Doctor(Long id, String emailId, String name, String password, String phoneNo, String specialization,
-			String qualification, String experience, String licenceNumber, Date createdDate, Date dOB, int age,
+	public Doctor(Long id, String name, String emailId, String password, String phoneNo, String specialization,
+			String qualification, String experience, String licenceNumber, Date createdDate, Date dob, int age,
 			String gender, String areaOfPractice, String state, String country, String aboutDoctor, Long patientCount,
 			Long appointmentCount, int rating, String status) {
 		super();
-		Id = id;
-		EmailId = emailId;
-		Name = name;
-		Password = password;
-		PhoneNo = phoneNo;
-		Specialization = specialization;
-		Qualification = qualification;
-		Experience = experience;
-		LicenceNumber = licenceNumber;
-		CreatedDate = createdDate;
-		DOB = dOB;
+		this.id = id;
+		this.name = name;
+		this.emailId = emailId;
+		this.password = password;
+		this.phoneNo = phoneNo;
+		this.specialization = specialization;
+		this.qualification = qualification;
+		this.experience = experience;
+		this.licenceNumber = licenceNumber;
+		this.createdDate = createdDate;
+		this.dob = dob;
 		this.age = age;
-		Gender = gender;
-		AreaOfPractice = areaOfPractice;
-		State = state;
-		Country = country;
-		AboutDoctor = aboutDoctor;
-		PatientCount = patientCount;
-		AppointmentCount = appointmentCount;
+		this.gender = gender;
+		this.areaOfPractice = areaOfPractice;
+		this.state = state;
+		this.country = country;
+		this.aboutDoctor = aboutDoctor;
+		this.patientCount = patientCount;
+		this.appointmentCount = appointmentCount;
 		this.rating = rating;
 		this.status = status;
 	}
@@ -68,70 +74,70 @@ public class Doctor {
 		super();
 	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
-	}
-	public String getEmailId() {
-		return EmailId;
-	}
-	public void setEmailId(String emailId) {
-		EmailId = emailId;
+		this.id = id;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 	public String getPhoneNo() {
-		return PhoneNo;
+		return phoneNo;
 	}
 	public void setPhoneNo(String phoneNo) {
-		PhoneNo = phoneNo;
+		this.phoneNo = phoneNo;
 	}
 	public String getSpecialization() {
-		return Specialization;
+		return specialization;
 	}
 	public void setSpecialization(String specialization) {
-		Specialization = specialization;
+		this.specialization = specialization;
 	}
 	public String getQualification() {
-		return Qualification;
+		return qualification;
 	}
 	public void setQualification(String qualification) {
-		Qualification = qualification;
+		this.qualification = qualification;
 	}
 	public String getExperience() {
-		return Experience;
+		return experience;
 	}
 	public void setExperience(String experience) {
-		Experience = experience;
+		this.experience = experience;
 	}
 	public String getLicenceNumber() {
-		return LicenceNumber;
+		return licenceNumber;
 	}
 	public void setLicenceNumber(String licenceNumber) {
-		LicenceNumber = licenceNumber;
+		this.licenceNumber = licenceNumber;
 	}
 	public Date getCreatedDate() {
-		return CreatedDate;
+		return createdDate;
 	}
 	public void setCreatedDate(Date createdDate) {
-		CreatedDate = createdDate;
+		this.createdDate = createdDate;
 	}
-	public Date getDOB() {
-		return DOB;
+	public Date getDob() {
+		return dob;
 	}
-	public void setDOB(Date dOB) {
-		DOB = dOB;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 	public int getAge() {
 		return age;
@@ -140,46 +146,46 @@ public class Doctor {
 		this.age = age;
 	}
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 	public String getAreaOfPractice() {
-		return AreaOfPractice;
+		return areaOfPractice;
 	}
 	public void setAreaOfPractice(String areaOfPractice) {
-		AreaOfPractice = areaOfPractice;
+		this.areaOfPractice = areaOfPractice;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 	public String getAboutDoctor() {
-		return AboutDoctor;
+		return aboutDoctor;
 	}
 	public void setAboutDoctor(String aboutDoctor) {
-		AboutDoctor = aboutDoctor;
+		this.aboutDoctor = aboutDoctor;
 	}
 	public Long getPatientCount() {
-		return PatientCount;
+		return patientCount;
 	}
 	public void setPatientCount(Long patientCount) {
-		PatientCount = patientCount;
+		this.patientCount = patientCount;
 	}
 	public Long getAppointmentCount() {
-		return AppointmentCount;
+		return appointmentCount;
 	}
 	public void setAppointmentCount(Long appointmentCount) {
-		AppointmentCount = appointmentCount;
+		this.appointmentCount = appointmentCount;
 	}
 	public int getRating() {
 		return rating;
@@ -193,15 +199,6 @@ public class Doctor {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@Override
-	public String toString() {
-		return "Doctor [Id=" + Id + ", EmailId=" + EmailId + ", Name=" + Name + ", Password=" + Password + ", PhoneNo="
-				+ PhoneNo + ", Specialization=" + Specialization + ", Qualification=" + Qualification + ", Experience="
-				+ Experience + ", LicenceNumber=" + LicenceNumber + ", CreatedDate=" + CreatedDate + ", DOB=" + DOB
-				+ ", age=" + age + ", Gender=" + Gender + ", AreaOfPractice=" + AreaOfPractice + ", State=" + State
-				+ ", Country=" + Country + ", AboutDoctor=" + AboutDoctor + ", PatientCount=" + PatientCount
-				+ ", AppointmentCount=" + AppointmentCount + ", rating=" + rating + ", status=" + status + "]";
-	}
-	
+		
 	
 }

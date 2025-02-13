@@ -1,12 +1,13 @@
 .container {
     padding: 24px;
-    /* background-color: #ef4444; */
+    width: 100%;
   }
   
   .title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 16px;
+    color: rgb(32, 152, 196);
   }
   
   .table {
@@ -18,7 +19,7 @@
   .table th, .table td {
     padding: 12px;
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
   }
   
   #status {
@@ -27,7 +28,7 @@
     color: white;
     font-size: 0.875rem;
   }
-  
+ 
   .Pending {
     background-color: #fbbf24; /* Yellow */
   }
@@ -43,6 +44,7 @@
   .actions {
     display: flex;
     gap: 8px;
+    justify-content: space-around;
   }
   
   .button {
@@ -52,6 +54,8 @@
     color: white;
     font-weight: bold;
     border-radius: 4px;
+    margin-left:2rem;
+    width: 7rem;
   }
   
   #approve {
@@ -64,4 +68,9 @@
   
   .button:hover {
     opacity: 0.8;
+  }
+  .block{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
   }

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import style from '../Style/OthersCss/DRegistration.module.css'
+import { useNavigate } from "react-router-dom";
+import style from '../Style/OthersCss/DRegistration.module.css';
+
 function DRegistration() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    emailId: "",
     password: "",
     confirmPassword: "",
     areaOfPractice: "",
     experience: "",
     qualification: "",
-    phone: "",
+    phoneNo: "",
     state: "",
-    birthday: "",
-    gender: "Male",
+    dob: "",
+    gender: "",
   });
 
   const handleChange = (e) => {
@@ -23,21 +27,57 @@ function DRegistration() {
     setFormData({ ...formData, gender: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-    console.log("Doctor Registered:", formData);
-    alert("Doctor Registered Successfully!");
+
+    const doctorData = {
+      name: formData.name,
+      emailId: formData.emailId,
+      password: formData.password,
+      areaOfPractice: formData.areaOfPractice,
+      experience: formData.experience,
+      qualification: formData.qualification,
+      phoneNo: formData.phoneNo,
+      state: formData.state,
+      dob: formData.dob,
+      gender: formData.gender,
+      status:"Pending"
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/doctorapilogin/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(doctorData)
+      });
+
+      if (response.ok) {
+        const doctor = await response.json();
+        // localStorage.setItem("doctorId", doctor.id);  
+        
+        alert("Doctor Registered Successfully!");
+        navigate("/login");
+      } else {
+        throw new Error("Registration failed");
+      }
+    } catch (error) {
+      console.error("Registration Error:", error);
+      alert("Registration Failed! Please try again.");
+    }
   };
 
   return (
     <div className={style.registrationContainer}>
       <div className={style.registrationCard}>
         <h2 className={style.registrationTitle}>Doctor Registration</h2>
-        
+
         <form onSubmit={handleSubmit}>
           <div className={style.formGroup}>
             <p>Name:</p>
@@ -46,7 +86,7 @@ function DRegistration() {
 
           <div className={style.formGroup}>
             <p>Email:</p>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" name="emailId" value={formData.emailId} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
@@ -76,7 +116,7 @@ function DRegistration() {
 
           <div className={style.formGroup}>
             <p>Phone:</p>
-            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
+            <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
@@ -85,8 +125,8 @@ function DRegistration() {
           </div>
 
           <div className={style.formGroup}>
-            <p>Birthday:</p>
-            <input type="date" name="birthday" value={formData.birthday} onChange={handleChange} required />
+            <p>Date of Birth:</p>
+            <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
           </div>
 
           <div className={style.formGroup}>
