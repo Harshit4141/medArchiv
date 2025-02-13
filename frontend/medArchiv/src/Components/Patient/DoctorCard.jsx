@@ -7,14 +7,14 @@ function DoctorCard({Doctor}) {
   return (  
             <div className={style.card}>
                 <div>
-                    <img src={Doctor.gender=="Male"?male:female} className={style.img} alt="female" title="women" />
+                    <img src={Doctor.gender=="male"?male:female} className={style.img} alt="female" title="women" />
                 </div>
                 <div className={style.namesection}>
-                    <h3>{Doctor.name}</h3>
+                    <h3>Dr.{Doctor.name}</h3>
                     <p className={style.message}>{Doctor.specialization}</p>
                 </div>
                 <div className={style.buttonSection}>
-                      <Link to={`/DoctorDetail/${Doctor.id}`}><div className={style.Btn}>
+                      <Link to={`/ViewDoctor/${Doctor.id}`}><div className={style.Btn}>
                      <button className={style.Appointbtn}>View</button>
                     </div></Link> 
                 </div>

@@ -7,7 +7,7 @@
     border-radius: 0.5rem;
     display: flex;
     border: 1px solid black;
-    box-shadow: 5px 5px 10px rgb(66, 65, 65);
+    /* box-shadow: 5px 5px 10px rgb(66, 65, 65); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,13 +62,16 @@
     font-weight:bold;
     color: white;
     border: 0.1rem solid rgb(68, 66, 66);
-    width: 70%;
+    /* width: 70%; */
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 11rem;
 }
 .Btn{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    /* justify-content:space-between; */
+    /* align-items: center; */
     margin-top: 1rem;
     /* background-color: aqua; */
     width: 100%;
@@ -98,8 +101,8 @@
     font-weight:bold;
     border: 0.1rem solid rgb(193, 186, 186);
     border-radius: 0.3rem;
-    background-color: rgba(255, 0, 0, 0.885);
-    /* background-color: rgba(86, 91, 199, 0.83); */
+    /* background-color: rgba(255, 0, 0, 0.885); */
+    background-color: rgb(207, 80, 26);
     color: white;
     padding-left:1rem;
     padding-right: 1rem;
